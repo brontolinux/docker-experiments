@@ -90,3 +90,28 @@ When you run this image or any container you build upon it, you'll need
 In addition you'll want to use either the `-P` or the `-p` option
 to `docker run` to expose cf-serverd outside the container.
 
+
+## progrium-consul
+
+At the moment, this directory contains only one script: start-single-master.sh.
+I use this script to configure a single-node consul server to be used
+as a key-value store in experiments with overlay networks.
+
+This script aggregates system information and then runs a docker
+container progrium/consul, with a consul server bootstrapped as a
+single master.
+
+The container is configured as per instructions found at
+https://hub.docker.com/r/progrium/consul/
+
+The variables in the following section allow you to configure some
+aspects of the container and of the script itself.
+
+The IP advertised by consul is the IPv4 address set on the interface
+through which the default route is configured. Notice that if the
+interface has more than one address assigned, the script will likely
+break.
+
+As for the IP of the docker bridge, we detect the IPv4 address of
+docker0, as indicated in the instructions at the progrium/consul
+web page
