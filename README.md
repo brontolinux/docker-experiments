@@ -115,3 +115,21 @@ break.
 As for the IP of the docker bridge, we detect the IPv4 address of
 docker0, as indicated in the instructions at the progrium/consul
 web page
+
+
+## docker-consul
+
+This is the same as progrium-consul, but using the official consul image
+from Docker and Hashicorp.
+
+This directory contains two scripts.
+
+`start-single-master.sh` will start a docker container running a consul
+agent in server mode. The container is started with the option
+`--net=host`, thus sharing the network stack with the host itself.
+
+`start-client.sh`  will start a docker container running a consul agent
+in client mode. The IP of the consul master is given as an argument on
+the command line.
+
+For more information, see the comments in the scripts themselves.
