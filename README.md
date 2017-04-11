@@ -133,3 +133,26 @@ in client mode. The IP of the consul master is given as an argument on
 the command line.
 
 For more information, see the comments in the scripts themselves.
+
+
+## consul-master
+
+This directory contains only one script: `start-consul-master.sh`.
+
+This script aggregates system information and then runs a consul
+server bootstrapped as a single master.
+
+With the default configuration, the script assumes to run in a directory
+where the following directory structure is present:
+
+* `bin`, which contains the `consul` binary;
+* `config`, which may contain the configuration for consul
+* `data`, which is used by consul to store its data
+
+You can modify the values of the variables in the configuration section
+of the script to change these and other parameters.
+
+The IP advertised by consul is the IPv4 address set on the interface
+through which the default route is configured. Notice that if the
+interface has more than one address assigned, the script will likely
+break.
